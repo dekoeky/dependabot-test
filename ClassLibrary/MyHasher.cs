@@ -8,13 +8,13 @@ namespace ClassLibrary;
 /// </summary>
 public class MyHasher
 {
-    private readonly SHA256 _sha = new();
-    private readonly Encoding _encoding = Encoding.ASCII;
+    public static readonly SHA256 Sha = new();
+    private static readonly Encoding Encoding = Encoding.ASCII;
 
     public string Hash(string input)
     {
-        var bytes = _encoding.GetBytes(input);
-        var hashBytes = _sha.ComputeHash(bytes);
+        var bytes = Encoding.GetBytes(input);
+        var hashBytes = Sha.ComputeHash(bytes);
         var hash = Convert.ToBase64String(hashBytes);
 
         return hash;
